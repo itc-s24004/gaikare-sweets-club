@@ -29,6 +29,7 @@ export async function get(key: string, hasReceived?: boolean): Promise<models["m
                                             id: true,
                                             name: true,
                                             price: true,
+                                            stock: true,
                                             img: {
                                                 select: {
                                                     url: true
