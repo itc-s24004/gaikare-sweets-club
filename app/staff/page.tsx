@@ -10,7 +10,5 @@ export default async function Page() {
     await connection()
     const base = await AppDB._custom.base.get();
 
-    const orders = await AppDB.order.getQueue()
-
-    return <PageView store={base.store} languages={base.languages} orders={orders} />;
+    return <PageView store={base.store} languages={base.languages} />;
 }

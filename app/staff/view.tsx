@@ -19,11 +19,10 @@ import { API_Client } from "../api/app/client"
 
 type PageViewProps = {
     store: AppDB_Types["store"]["model"],
-    languages: AppDB_Types["language"]["model"][],
-    orders: AppDB_Types["order"]["model"][]
+    languages: AppDB_Types["language"]["model"][]
 }
 
-export function PageView({ store, languages, orders: o }: PageViewProps) {
+export function PageView({ store, languages }: PageViewProps) {
     const [showQR_Reader, setShowQR_Reader] = useState(false);
     
     const video = useRef<HTMLVideoElement>(null);
@@ -58,7 +57,7 @@ export function PageView({ store, languages, orders: o }: PageViewProps) {
 
 
 
-    const [orders, setOrders] = useState<AppDB_Types["order"]["model"][]>(o);
+    const [orders, setOrders] = useState<AppDB_Types["order"]["model"][]>([]);
     const get = useAPI(async (key: string) => {
         const res = await API_Client.staff.userVerifyKey.__key.order.get(key);
         if (res?.body.success) {
