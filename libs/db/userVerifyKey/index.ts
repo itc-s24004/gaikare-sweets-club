@@ -4,7 +4,9 @@ import { db } from "../db";
 export async function verify(userId: string, key: string) {
     return db.userVerifyKey.findUnique({
         where: {
-            userId,
+            user: {
+                id: userId
+            },
             key,
             expiresAt: {
                 gte: new Date()
